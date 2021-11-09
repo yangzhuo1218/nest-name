@@ -1,9 +1,18 @@
-import { Controller, Get, Req, HttpCode, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Req,
+  HttpCode,
+  Param,
+  UseGuards,
+} from '@nestjs/common';
 import { UserService } from './user.service';
 import { Request } from 'express';
 import { ApiTags, ApiParam, ApiQuery, ApiHeader } from '@nestjs/swagger';
+import { UserGuard } from './userguard';
 
 @Controller('user')
+@UseGuards(UserGuard) // 方法级路由守卫
 export class UserController {
   constructor(private readonly user: UserService) {}
 
