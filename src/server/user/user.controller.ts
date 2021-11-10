@@ -32,7 +32,7 @@ export class UserController {
     description: '本次请求请带上token',
   })
   @HttpCode(200)
-  findAll(@Param('id') id, @Req() request: Request): string {
-    return this.user.getID(id, request.query); // [All User's Info] 暂时代替所有用户的信息
+  findAll(@Param('id') id, @Req() request: Request): Promise<any> {
+    return this.user.getID(); // [All User's Info] 暂时代替所有用户的信息
   }
 }
