@@ -10,11 +10,10 @@ export class UserService {
     private readonly usersRepository: Repository<UsersEntity>,
   ) {}
   async getID(): Promise<any> {
-    const photoToUpdate = await this.usersRepository.findOne(1);
-    await this.usersRepository.save({
-      ...photoToUpdate,
-      bookName: '哈哈哈哈 - 测试更改',
-    });
+    const photoToUpdate = await this.usersRepository
+      .createQueryBuilder('user')
+      .where('user.id = :id', { id: 1 })
+      .getOne();
     return photoToUpdate; //调用数据的查询方法
   }
 }

@@ -5,9 +5,10 @@ import { AdminModule } from './server/admin/admin.module';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 // 引入数据库的及配置文件
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), UserModule, AdminModule],
+  imports: [TypeOrmModule.forRoot(), UserModule, AdminModule, AuthModule],
   controllers: [AppController],
 })
 export class AppModule implements NestModule {
